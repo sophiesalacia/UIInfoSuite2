@@ -342,14 +342,14 @@ namespace UIInfoSuite2.UIElements
             {
                 if (currentItem is FishingRod)
                 {
-                    _experienceFillColor.Value = new Color(17, 84, 252, 0.63f);
+                    _experienceFillColor.Value = Globals.Config.FishingColor;
                     currentLevelIndex = 1;
                     _experienceIconPosition.Value = _fishingIconRectangle;
                     _currentSkillLevel.Value = Game1.player.fishingLevel.Value;
                 }
                 else if (currentItem is Pickaxe)
                 {
-                    _experienceFillColor.Value = new Color(145, 104, 63, 0.63f);
+                    _experienceFillColor.Value = Globals.Config.MiningColor;
                     currentLevelIndex = 3;
                     _experienceIconPosition.Value = _miningIconRectangle;
                     _currentSkillLevel.Value = Game1.player.miningLevel.Value;
@@ -357,7 +357,7 @@ namespace UIInfoSuite2.UIElements
                 else if (currentItem is MeleeWeapon &&
                     currentItem.Name != "Scythe")
                 {
-                    _experienceFillColor.Value = new Color(204, 0, 3, 0.63f);
+                    _experienceFillColor.Value = Globals.Config.CombatColor;
                     currentLevelIndex = 4;
                     _experienceIconPosition.Value = _combatIconRectangle;
                     _currentSkillLevel.Value = Game1.player.combatLevel.Value;
@@ -365,14 +365,14 @@ namespace UIInfoSuite2.UIElements
                 else if (Game1.currentLocation is Farm &&
                     !(currentItem is Axe))
                 {
-                    _experienceFillColor.Value = new Color(255, 251, 35, 0.38f);
-                    currentLevelIndex = 0;
+	                _experienceFillColor.Value = Globals.Config.FarmingColor;
+	                currentLevelIndex = 0;
                     _experienceIconPosition.Value = _farmingIconRectangle;
                     _currentSkillLevel.Value = Game1.player.farmingLevel.Value;
                 }
                 else
                 {
-                    _experienceFillColor.Value = new Color(0, 234, 0, 0.63f);
+                    _experienceFillColor.Value = Globals.Config.ForagingColor;
                     currentLevelIndex = 2;
                     _experienceIconPosition.Value = _foragingIconRectangle;
                     _currentSkillLevel.Value = Game1.player.foragingLevel.Value;
