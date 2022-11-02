@@ -256,7 +256,7 @@ namespace UIInfoSuite2.UIElements
                 {
                     case 0:
                         {
-                            _experienceFillColor.Value = new Color(255, 251, 35, 0.38f);
+                            _experienceFillColor.Value = Globals.Config.FarmingColor;
                             _experienceIconPosition.Value = _farmingIconRectangle;
                             _currentSkillLevel.Value = Game1.player.farmingLevel.Value;
                             break;
@@ -264,7 +264,7 @@ namespace UIInfoSuite2.UIElements
 
                     case 1:
                         {
-                            _experienceFillColor.Value = new Color(17, 84, 252, 0.63f);
+	                        _experienceFillColor.Value = Globals.Config.FishingColor;
                             _experienceIconPosition.Value = _fishingIconRectangle;
                             _currentSkillLevel.Value = Game1.player.fishingLevel.Value;
                             break;
@@ -272,7 +272,7 @@ namespace UIInfoSuite2.UIElements
 
                     case 2:
                         {
-                            _experienceFillColor.Value = new Color(0, 234, 0, 0.63f);
+	                        _experienceFillColor.Value = Globals.Config.ForagingColor;
                             _experienceIconPosition.Value = _foragingIconRectangle;
                             _currentSkillLevel.Value = Game1.player.foragingLevel.Value;
                             break;
@@ -280,7 +280,7 @@ namespace UIInfoSuite2.UIElements
 
                     case 3:
                         {
-                            _experienceFillColor.Value = new Color(145, 104, 63, 0.63f);
+	                        _experienceFillColor.Value = Globals.Config.MiningColor;
                             _experienceIconPosition.Value = _miningIconRectangle;
                             _currentSkillLevel.Value = Game1.player.miningLevel.Value;
                             break;
@@ -288,7 +288,7 @@ namespace UIInfoSuite2.UIElements
 
                     case 4:
                         {
-                            _experienceFillColor.Value = new Color(204, 0, 3, 0.63f);
+	                        _experienceFillColor.Value = Globals.Config.CombatColor;
                             _experienceIconPosition.Value = _combatIconRectangle;
                             _currentSkillLevel.Value = Game1.player.combatLevel.Value;
                             break;

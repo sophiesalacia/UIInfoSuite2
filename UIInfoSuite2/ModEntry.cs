@@ -3,6 +3,7 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Menus;
 using System;
+using Microsoft.Xna.Framework;
 using UIInfoSuite2.AdditionalFeatures;
 using UIInfoSuite2.Compatibility;
 using UIInfoSuite2.Infrastructure;
@@ -33,6 +34,8 @@ namespace UIInfoSuite2
 
             _skipIntro = new SkipIntro(helper.Events);
             _modConfig = Helper.ReadConfig<ModConfig>();
+
+            Globals.Config = _modConfig;
 
             helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
@@ -125,8 +128,11 @@ namespace UIInfoSuite2
             configMenu.Register(
                 mod: ModManifest,
                 reset: () => _modConfig = new ModConfig(),
-                save: () => Helper.WriteConfig(_modConfig)
-            );
+                save: () =>
+                {
+	                Helper.WriteConfig(_modConfig);
+	                Globals.Config = _modConfig;
+                });
 
             // add some config options
             configMenu.AddBoolOption(
@@ -156,6 +162,61 @@ namespace UIInfoSuite2
                 tooltip: () => "Opens the quest board.",
                 getValue: () => _modConfig.OpenQuestBoardKeybind,
                 setValue: value => _modConfig.OpenQuestBoardKeybind = value
+            );
+
+            configMenu.AddTextOption(
+	            mod: ModManifest,
+	            name: () => "Farming Bar Color",
+	            getValue: () => _modConfig.FarmingColor.ToHexString(),
+	            setValue: colorString =>
+	            {
+		            ColorHandler.TryParseColor(colorString, out Color color);
+		            _modConfig.FarmingColor = color;
+	            }
+            );
+
+            configMenu.AddTextOption(
+	            mod: ModManifest,
+	            name: () => "Fishing Bar Color",
+	            getValue: () => _modConfig.FishingColor.ToHexString(),
+	            setValue: colorString =>
+	            {
+		            ColorHandler.TryParseColor(colorString, out Color color);
+		            _modConfig.FishingColor = color;
+	            }
+            );
+
+            configMenu.AddTextOption(
+	            mod: ModManifest,
+	            name: () => "Foraging Bar Color",
+	            getValue: () => _modConfig.ForagingColor.ToHexString(),
+	            setValue: colorString =>
+	            {
+		            ColorHandler.TryParseColor(colorString, out Color color);
+		            _modConfig.ForagingColor = color;
+	            }
+            );
+
+            configMenu.AddTextOption(
+	            mod: ModManifest,
+	            name: () => "Mining Bar Color",
+	            getValue: () => _modConfig.MiningColor.ToHexString(),
+	            setValue: colorString =>
+	            {
+		            ColorHandler.TryParseColor(colorString, out Color color);
+		            _modConfig.MiningColor = color;
+	            }
+            );
+
+            configMenu.AddTextOption(
+	            mod: ModManifest,
+	            name: () => "Combat Bar Color",
+	            getValue: () => _modConfig.CombatColor.ToHexString(),
+	            setValue: colorString =>
+	            {
+		            ColorHandler.TryParseColor(colorString, out Color color);
+		            _modConfig.CombatColor = color;
+	            }
             );
         }
         #endregion
